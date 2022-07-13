@@ -1,19 +1,26 @@
 	program derivada_teste 
 	implicit none
-	real*8 x , Fx, deriv, dx, minha_funcao
+	real*8 x , Fx, deriv, dx, minha_funcao,y
 	integer i
 	open(unit=1,file='funcao.dat')
 	open(unit=2,file='derivada.dat')
-
 	!tamanho do intervalo
-	dx=0.1d0
-		do i= -2,2
-			x=i/1000.0
+	i = 0.001
+	x = -2
+		do while (x<= 2)
+			x = x+0.001
+			y=-2.0
+			do while (y<=2)
+				y = y + 0.001
+				write(*,*) x,y
+				
+			end do
+		end do
 			! chamando a rotina que vai calcular a derivada
 			call derivada(deriv,dx,x)
-  			write(1,*) x,minha_funcao(x)
+  			write(2,*) x,minha_funcao(x)
 			write(*,*) x,deriv
-		end do
+		print*, 'Comando realizado papai'
 	
 	end program
 
